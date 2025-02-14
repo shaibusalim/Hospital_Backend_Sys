@@ -29,13 +29,18 @@ const signUp = async(req, res) => {
      if (role === 'doctor') {
       await Doctor.create({ userId: user.id });
     } else if (role === 'patient') {
-      // Check if doctorId exists before assigning the patient to a doctor
-      const doctor = await Doctor.findByPk(doctorId);
-      if (!doctor) {
-        return res.status(400).json({ message: 'Doctor not found. Please select a valid doctor.' });
+      // Create a patient record, with or without a doctorId
+      const patientData = { userId: user.id };
+      if (doctorId) {
+        // Check if the doctor exists
+        const doctor = await Doctor.findByPk(doctorId);
+        if (!doctor) {
+          return res.status(400).json({ message: 'Doctor not found. Please select a valid doctor.' });
+        }
+        patientData.doctorId = doctorId;
       }
 
-      await Patient.create({ userId: user.id, doctorId: doctorId });
+      await Patient.create(patientData);
     }
 
     res.status(201).json({ message: 'User created successfully', user });
