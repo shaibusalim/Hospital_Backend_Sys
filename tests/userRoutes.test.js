@@ -1,6 +1,6 @@
+require('dotenv').config();
 const request = require('supertest');
-const request = require('supertest');
-const app = require('../app');
+const app = require('../server');
 const sequelize = require('../config/database');
 const User = require('../models/User');
 

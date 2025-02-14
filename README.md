@@ -14,7 +14,16 @@ This API is designed to manage patients, doctors, and notes in a hospital manage
       "name": "John Doe",
       "email": "john@example.com",
       "password": "password123",
-      "role": "Patient"
+      "role": "Patient",
+      "doctorId": 1
+    }
+    ```
+    ```json
+    {
+      "name": "Dr Doe",
+      "email": "drdoe@example.com",
+      "password": "password123",
+      "role": "Doctor",
     }
     ```
 
@@ -69,7 +78,7 @@ Unit tests are implemented for user routes, patient routes, and note routes usin
 ## Installation
 1. Clone the repository.
 2. Run `npm install` to install dependencies.
-3. Set up the database and environment variables in a `.env` file.
+3. Set up the database and environment variables in a `.env` file. Copy `.env.example` to `.env`.
 4. Start the server with `npm start`.
 
 ## Documentation
